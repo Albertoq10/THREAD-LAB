@@ -1,0 +1,2 @@
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/core_cm0plus.h:846:22:NVIC_SystemReset	0	static
+../framework/Reset/Reset.c:39:6:ResetMCU	8	static

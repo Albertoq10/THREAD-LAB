@@ -1,0 +1,57 @@
+nwk_ip/base/stack_globals/sixlowpan_globals.o \
+ nwk_ip/base/stack_globals/sixlowpan_globals.d: \
+ ../nwk_ip/base/stack_globals/sixlowpan_globals.c \
+ C:/REDES/THREAD/frdmkw41z_wireless_examples_thread_router_eligible_device_freertos/source/config.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\app\config/app_config.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\app\config/app_stack_config.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/stack_config.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/thread_stack_config.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\app\config/app_framework_config.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\app\config/app_mac_config.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/sixlowpan.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\common/EmbeddedTypes.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\TimersManager\Interface/TimersManager.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/stack_config.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface/network_utils.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\Messaging\Interface/Messaging.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\Lists/GenericList.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\MemManager\Interface/MemManager.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\OSAbstraction\Interface/fsl_os_abstraction.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\OSAbstraction\Interface/fsl_os_abstraction_config.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/sixlowpan_interface.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\base\interface/mac_abs_types.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/sixlowpan_ib.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\base\interface/mac_abs_802154.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\base\interface/mac_abs_types.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/event_manager.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/sixlowpan_tbl.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/sixlowpan.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/sixlowpan_cfg.h \
+ C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/sixlowpan_cfg.h
+C:/REDES/THREAD/frdmkw41z_wireless_examples_thread_router_eligible_device_freertos/source/config.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\app\config/app_config.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\app\config/app_stack_config.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/stack_config.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/thread_stack_config.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\app\config/app_framework_config.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\app\config/app_mac_config.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/sixlowpan.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\common/EmbeddedTypes.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\TimersManager\Interface/TimersManager.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/stack_config.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface/network_utils.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\Messaging\Interface/Messaging.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\Lists/GenericList.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\MemManager\Interface/MemManager.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\OSAbstraction\Interface/fsl_os_abstraction.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\OSAbstraction\Interface/fsl_os_abstraction_config.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/sixlowpan_interface.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\base\interface/mac_abs_types.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/sixlowpan_ib.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\base\interface/mac_abs_802154.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\base\interface/mac_abs_types.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/event_manager.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/sixlowpan_tbl.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/sixlowpan.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/sixlowpan_cfg.h:
+C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/sixlowpan_cfg.h:
