@@ -24,7 +24,7 @@
 ../source/router_eligible_device_app.c:1085:13:APP_SendDataSinkCreate	16	static
 ../source/router_eligible_device_app.c:617:13:APP_InitCoapDemo	104	static
 ../source/router_eligible_device_app.c:358:13:APP_CoapResource2Cb	16	static
-../source/router_eligible_device_app.c:285:13:APP_CoapResource1Cb	32	static
+../source/router_eligible_device_app.c:285:13:APP_CoapResource1Cb	24	static
 ../source/router_eligible_device_app.c:1414:13:APP_CoapTempCb	88	static
 ../source/router_eligible_device_app.c:204:6:APP_Init	8	static
 ../source/router_eligible_device_app.c:266:6:APP_Handler	8	static

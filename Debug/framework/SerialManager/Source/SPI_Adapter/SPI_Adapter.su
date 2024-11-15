@@ -1,5 +1,5 @@
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/core_cm0plus.h:804:22:NVIC_SetPriority	16	static
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\drivers/fsl_dspi.h:941:24:DSPI_MasterGetFormattedCommand	0	static
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\CMSIS/core_cm0plus.h:804:22:NVIC_SetPriority	16	static
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\drivers/fsl_dspi.h:941:24:DSPI_MasterGetFormattedCommand	0	static
 ../framework/SerialManager/Source/SPI_Adapter/SPI_Adapter.c:757:13:Spi_WriteData	0	static
 ../framework/SerialManager/Source/SPI_Adapter/SPI_Adapter.c:782:15:Spi_SlaveTransmitCompleted	0	static
 ../framework/SerialManager/Source/SPI_Adapter/SPI_Adapter.c:810:13:Spi_FillTxFifoSlave	0	static

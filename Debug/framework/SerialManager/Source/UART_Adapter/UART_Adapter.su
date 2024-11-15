@@ -1,4 +1,4 @@
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/core_cm0plus.h:804:22:NVIC_SetPriority	16	static
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\CMSIS/core_cm0plus.h:804:22:NVIC_SetPriority	16	static
 ../framework/SerialManager/Source/UART_Adapter/UART_Adapter.c:751:13:LPUART_ISR	16	static
 ../framework/SerialManager/Source/UART_Adapter/UART_Adapter.c:69:10:LPUART_Initialize	32	static
 ../framework/SerialManager/Source/UART_Adapter/UART_Adapter.c:106:10:LPUART_SetBaudrate	16	static

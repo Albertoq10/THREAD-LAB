@@ -1,4 +1,4 @@
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/core_cm0plus.h:804:22:NVIC_SetPriority	16	static
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\CMSIS/core_cm0plus.h:804:22:NVIC_SetPriority	16	static
 ../framework/TimersManager/Source/TMR_Adapter.c:74:6:StackTimer_Init	16	static
 ../framework/TimersManager/Source/TMR_Adapter.c:113:6:StackTimer_Enable	0	static
 ../framework/TimersManager/Source/TMR_Adapter.c:123:6:StackTimer_Disable	0	static

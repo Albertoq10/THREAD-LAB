@@ -1,4 +1,4 @@
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\drivers/fsl_tsi_v4.h:515:20:TSI_SetMeasuredChannelNumber	8	static
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\drivers/fsl_tsi_v4.h:515:20:TSI_SetMeasuredChannelNumber	8	static
 ../framework/Keyboard/Source/Keyboard.c:1095:13:TsiSwTriggerCallback	8	static
 ../framework/Keyboard/Source/Keyboard.c:354:13:KbGpioInit	8	static
 ../framework/Keyboard/Source/Keyboard.c:376:13:KbTsiInit	32	static

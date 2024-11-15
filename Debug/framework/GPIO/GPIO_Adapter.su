@@ -1,5 +1,5 @@
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/core_cm0plus.h:804:22:NVIC_SetPriority	16	static
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/core_cm0plus.h:828:26:NVIC_GetPriority	0	static
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\CMSIS/core_cm0plus.h:804:22:NVIC_SetPriority	16	static
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\CMSIS/core_cm0plus.h:828:26:NVIC_GetPriority	0	static
 ../framework/GPIO/GPIO_Adapter.c:556:13:Gpio_CommonIsr	8	static
 ../framework/GPIO/GPIO_Adapter.c:583:21:Gpio_InstallPortISR	16	static
 ../framework/GPIO/GPIO_Adapter.c:74:10:GpioGetPinPCR	0	static

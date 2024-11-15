@@ -1,4 +1,4 @@
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/core_cm0plus.h:804:22:NVIC_SetPriority	16	static
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\CMSIS/core_cm0plus.h:804:22:NVIC_SetPriority	16	static
 ../framework/SerialManager/Source/I2C_Adapter/I2C_Adapter.c:278:13:I2C_ISR	16	static
 ../framework/SerialManager/Source/I2C_Adapter/I2C_Adapter.c:44:10:I2C_Initialize	32	static
 ../framework/SerialManager/Source/I2C_Adapter/I2C_Adapter.c:90:10:I2C_InstallRxCalback	0	static

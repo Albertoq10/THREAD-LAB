@@ -1,79 +1,79 @@
 ieee_802.15.4/phy/source/MKW41Z/PhyPacketProcessor.o \
  ieee_802.15.4/phy/source/MKW41Z/PhyPacketProcessor.d: \
  ../ieee_802.15.4/phy/source/MKW41Z/PhyPacketProcessor.c \
- C:/REDES/THREAD/frdmkw41z_wireless_examples_thread_router_eligible_device_freertos/source/config.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\app\config/app_config.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\app\config/app_stack_config.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/stack_config.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/thread_stack_config.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\app\config/app_framework_config.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\app\config/app_mac_config.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\common/EmbeddedTypes.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\ieee_802.15.4\phy\interface/MpmInterface.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\ieee_802.15.4\phy\interface/PhyInterface.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\ieee_802.15.4\phy\interface/PhyTypes.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\ieee_802.15.4\phy\interface/PhyMessages.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\Messaging\Interface/Messaging.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\Lists/GenericList.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\MemManager\Interface/MemManager.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\FunctionLib/FunctionLib.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\board/board.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\drivers/fsl_gpio.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\drivers/fsl_common.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/fsl_device_registers.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/MKW41Z4.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/core_cm0plus.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/core_cmInstr.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/cmsis_gcc.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/core_cmFunc.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/system_MKW41Z4.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/MKW41Z4_features.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\drivers/fsl_clock.h \
+ C:/Users/diego/Documents/MCUXpressoIDE_11.9.0_2144/redes/Practica_2_Thread/source/config.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\nwk_ip\app\config/app_config.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\nwk_ip\app\config/app_stack_config.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\nwk_ip\core\interface\modules/stack_config.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\nwk_ip\core\interface\modules/thread_stack_config.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\nwk_ip\app\config/app_framework_config.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\nwk_ip\app\config/app_mac_config.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\common/EmbeddedTypes.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\ieee_802.15.4\phy\interface/MpmInterface.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\ieee_802.15.4\phy\interface/PhyInterface.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\ieee_802.15.4\phy\interface/PhyTypes.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\ieee_802.15.4\phy\interface/PhyMessages.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\Messaging\Interface/Messaging.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\Lists/GenericList.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\MemManager\Interface/MemManager.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\FunctionLib/FunctionLib.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\board/board.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\drivers/fsl_gpio.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\drivers/fsl_common.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\CMSIS/fsl_device_registers.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\CMSIS/MKW41Z4.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\CMSIS/core_cm0plus.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\CMSIS/core_cmInstr.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\CMSIS/cmsis_gcc.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\CMSIS/core_cmFunc.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\CMSIS/system_MKW41Z4.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\CMSIS/MKW41Z4_features.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\drivers/fsl_clock.h \
  ../ieee_802.15.4/phy/source/MKW41Z/Phy.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\ieee_802.15.4\phy\interface/PhyInterface.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\OSAbstraction\Interface/fsl_os_abstraction.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\OSAbstraction\Interface/fsl_os_abstraction_config.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\XCVR\MKW41Z4/fsl_xcvr.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\XCVR\MKW41Z4/fsl_xcvr_trim.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\XCVR\MKW41Z4/fsl_xcvr.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\XCVR\MKW41Z4/ifr_radio.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\Flash\Internal/Flash_Adapter.h \
- C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\drivers/fsl_flash.h
-C:/REDES/THREAD/frdmkw41z_wireless_examples_thread_router_eligible_device_freertos/source/config.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\app\config/app_config.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\app\config/app_stack_config.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/stack_config.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\core\interface\modules/thread_stack_config.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\app\config/app_framework_config.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\nwk_ip\app\config/app_mac_config.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\common/EmbeddedTypes.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\ieee_802.15.4\phy\interface/MpmInterface.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\ieee_802.15.4\phy\interface/PhyInterface.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\ieee_802.15.4\phy\interface/PhyTypes.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\ieee_802.15.4\phy\interface/PhyMessages.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\Messaging\Interface/Messaging.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\Lists/GenericList.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\MemManager\Interface/MemManager.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\FunctionLib/FunctionLib.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\board/board.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\drivers/fsl_gpio.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\drivers/fsl_common.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/fsl_device_registers.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/MKW41Z4.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/core_cm0plus.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/core_cmInstr.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/cmsis_gcc.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/core_cmFunc.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/system_MKW41Z4.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\CMSIS/MKW41Z4_features.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\drivers/fsl_clock.h:
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\ieee_802.15.4\phy\interface/PhyInterface.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\OSAbstraction\Interface/fsl_os_abstraction.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\OSAbstraction\Interface/fsl_os_abstraction_config.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\XCVR\MKW41Z4/fsl_xcvr.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\XCVR\MKW41Z4/fsl_xcvr_trim.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\XCVR\MKW41Z4/fsl_xcvr.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\XCVR\MKW41Z4/ifr_radio.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\Flash\Internal/Flash_Adapter.h \
+ C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\drivers/fsl_flash.h
+C:/Users/diego/Documents/MCUXpressoIDE_11.9.0_2144/redes/Practica_2_Thread/source/config.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\nwk_ip\app\config/app_config.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\nwk_ip\app\config/app_stack_config.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\nwk_ip\core\interface\modules/stack_config.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\nwk_ip\core\interface\modules/thread_stack_config.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\nwk_ip\app\config/app_framework_config.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\nwk_ip\app\config/app_mac_config.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\common/EmbeddedTypes.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\ieee_802.15.4\phy\interface/MpmInterface.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\ieee_802.15.4\phy\interface/PhyInterface.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\ieee_802.15.4\phy\interface/PhyTypes.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\ieee_802.15.4\phy\interface/PhyMessages.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\Messaging\Interface/Messaging.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\Lists/GenericList.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\MemManager\Interface/MemManager.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\FunctionLib/FunctionLib.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\board/board.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\drivers/fsl_gpio.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\drivers/fsl_common.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\CMSIS/fsl_device_registers.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\CMSIS/MKW41Z4.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\CMSIS/core_cm0plus.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\CMSIS/core_cmInstr.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\CMSIS/cmsis_gcc.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\CMSIS/core_cmFunc.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\CMSIS/system_MKW41Z4.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\CMSIS/MKW41Z4_features.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\drivers/fsl_clock.h:
 ../ieee_802.15.4/phy/source/MKW41Z/Phy.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\ieee_802.15.4\phy\interface/PhyInterface.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\OSAbstraction\Interface/fsl_os_abstraction.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\OSAbstraction\Interface/fsl_os_abstraction_config.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\XCVR\MKW41Z4/fsl_xcvr.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\XCVR\MKW41Z4/fsl_xcvr_trim.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\XCVR\MKW41Z4/fsl_xcvr.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\XCVR\MKW41Z4/ifr_radio.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\framework\Flash\Internal/Flash_Adapter.h:
-C:\REDES\THREAD\frdmkw41z_wireless_examples_thread_router_eligible_device_freertos\drivers/fsl_flash.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\ieee_802.15.4\phy\interface/PhyInterface.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\OSAbstraction\Interface/fsl_os_abstraction.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\OSAbstraction\Interface/fsl_os_abstraction_config.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\XCVR\MKW41Z4/fsl_xcvr.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\XCVR\MKW41Z4/fsl_xcvr_trim.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\XCVR\MKW41Z4/fsl_xcvr.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\XCVR\MKW41Z4/ifr_radio.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\framework\Flash\Internal/Flash_Adapter.h:
+C:\Users\diego\Documents\MCUXpressoIDE_11.9.0_2144\redes\Practica_2_Thread\drivers/fsl_flash.h:

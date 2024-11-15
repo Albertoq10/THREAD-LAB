@@ -341,7 +341,7 @@ uint32_t dataLen
       shell_write("'NON' packet received 'PUT' with payload: ");
     }
   }
-  shell_writeN(pData, dataLen);
+  shell_writeN((char*) pMySessionPayload, pMyPayloadSize);
   shell_write("\r\n");
   pMySession -> msgType=gCoapNonConfirmable_c;
   pMySession -> code= gCoapPOST_c;
@@ -349,7 +349,7 @@ uint32_t dataLen
   FLib_MemCpy(&pMySession->remoteAddrStorage,&gCoapDestAddress,sizeof(ipAddr_t));
  COAP_Send(pMySession, coapMsgType,  pMySessionPayload, pMyPayloadSize);
   shell_write("'NON' packet sent 'POST' with payload: ");
-  shell_writeN((char*) pMySessionPayload, pMyPayloadSize);
+  shell_write("ACK");
   shell_write("\r\n");
   COAP_CloseSession(pMySession);
 }
