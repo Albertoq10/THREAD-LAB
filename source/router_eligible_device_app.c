@@ -85,6 +85,8 @@ Private macros
 
 #define APP_RESOURCE2_URI_PATH 						 "/resource2"
 
+#define TEAM_RESOURCE_URI_PATH 						 "/team6"
+
 #if LARGE_NETWORK
 #define APP_RESET_TO_FACTORY_URI_PATH           "/reset"
 #endif
@@ -100,6 +102,8 @@ Private type definitions
 /*==================================================================================================
 Private global variables declarations
 ==================================================================================================*/
+static uint32_t timer_counter = 1;
+
 static instanceId_t mThrInstanceId = gInvalidInstanceId_c;    /*!< Thread Instance ID */
 
 static bool_t mFirstPushButtonPressed = FALSE;
@@ -152,9 +156,15 @@ const coapUriPath_t gAPP_SINK_URI_PATH = {SizeOfString(APP_SINK_URI_PATH), (uint
 const coapUriPath_t gAPP_RESOURCE1_URI_PATH = {SizeOfString(APP_RESOURCE1_URI_PATH), APP_RESOURCE1_URI_PATH};
 
 const coapUriPath_t gAPP_RESOURCE2_URI_PATH = {SizeOfString(APP_RESOURCE2_URI_PATH), APP_RESOURCE2_URI_PATH};
+
+const coapUriPath_t gTEAM_RESOURCE_URI_PATH = {SizeOfString(TEAM_RESOURCE_URI_PATH), TEAM_RESOURCE_URI_PATH};// TEAM URI SOURCE
+
+
 #if LARGE_NETWORK
 const coapUriPath_t gAPP_RESET_URI_PATH = {SizeOfString(APP_RESET_TO_FACTORY_URI_PATH), (uint8_t *)APP_RESET_TO_FACTORY_URI_PATH};
 #endif
+
+
 
 /* Application state/mode */
 appDeviceState_t gAppDeviceState[THR_MAX_INSTANCES];
@@ -286,11 +296,15 @@ uint32_t dataLen
 {
 
 	coapMsgTypesAndCodes_t coapMsgType = gCoapMsgTypeConPost_c  ;
-  static uint8_t pMySessionPayload[3]={0x31,0x32,0x33};
-  static uint32_t pMyPayloadSize=3;
+ // static uint8_t pMySessionPayload[3]={0x31,0x32,0x33};
+	static uint8_t pMySessionPayload[4];//for counter
+  static uint32_t pMyPayloadSize;
   coapSession_t *pMySession = NULL;
-  pMySession = COAP_OpenSession(mAppCoapInstId);
+  pMySession = COAP_OpenSession(mAppCoapInstId);//session created
   COAP_AddOptionToList(pMySession,COAP_URI_PATH_OPTION, APP_RESOURCE2_URI_PATH,SizeOfString(APP_RESOURCE2_URI_PATH));
+
+  snprintf(pMySessionPayload, sizeof(pMySessionPayload), "%d", timer_counter);//timer counter value format
+  pMyPayloadSize = strlen(pMySessionPayload);
 
     if (gCoapConfirmable_c == pSession->msgType)
   {
@@ -337,6 +351,7 @@ uint32_t dataLen
   shell_write("'NON' packet sent 'POST' with payload: ");
   shell_writeN((char*) pMySessionPayload, pMyPayloadSize);
   shell_write("\r\n");
+  COAP_CloseSession(pMySession);
 }
 
 
@@ -388,6 +403,15 @@ void APP_NwkScanHandler
 
 \param  [in]    param    Pointer to stack event
 ***************************************************************************************************/
+
+void timer_callback(void *param){
+	 if (timer_counter <= 200) {
+		 timer_counter++;
+	 } else {
+		 timer_counter = 1;
+	 }
+
+}
 void Stack_to_APP_Handler
 (
     void *param
@@ -428,6 +452,16 @@ void Stack_to_APP_Handler
             gEnable802154TxLed = TRUE;
             /* Uncomment to register multicast address */
             //IP_IF_AddMulticastGroup6(gIpIfSlp0_c, &mCastGroup);
+
+            //once router two connects, timer starts
+            if (mAppTimerId == gTmrInvalidTimerID_c) {
+            	mAppTimerId = TMR_AllocateTimer();
+            }
+            if (mAppTimerId != gTmrInvalidTimerID_c) {
+            	TMR_StartIntervalTimer(mAppTimerId, 1000 , timer_callback, NULL);//timer is in mS
+                timer_counter = 1; // starts timer at 1
+            }
+
             break;
 
         case gThrEv_GeneralInd_RequestRouterId_c:
@@ -589,6 +623,7 @@ static void APP_InitCoapDemo
                                      {APP_CoapTempCb, (coapUriPath_t *)&gAPP_TEMP_URI_PATH},
 
 									 {APP_CoapResource1Cb, (coapUriPath_t*)&gAPP_RESOURCE1_URI_PATH},
+									 {APP_CoapResource1Cb, (coapUriPath_t*)&gTEAM_RESOURCE_URI_PATH},
 
 									 {APP_CoapResource2Cb, (coapUriPath_t*)&gAPP_RESOURCE2_URI_PATH},
 
