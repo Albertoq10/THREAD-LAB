@@ -281,7 +281,6 @@ void APP_Handler
         }
     }
 }
-
 static void APP_CoapResource1Cb
 (
 
@@ -296,7 +295,7 @@ uint32_t dataLen
 {
 
 	coapMsgTypesAndCodes_t coapMsgType = gCoapMsgTypeConPost_c  ;
- // static uint8_t pMySessionPayload[3]={0x31,0x32,0x33};
+// static uint8_t pMySessionPayload[3]={0x31,0x32,0x33};
 	static uint8_t pMySessionPayload[4];//for counter
   static uint32_t pMyPayloadSize;
   coapSession_t *pMySession = NULL;
@@ -341,19 +340,18 @@ uint32_t dataLen
       shell_write("'NON' packet received 'PUT' with payload: ");
     }
   }
-  shell_writeN(pData, dataLen);
+  shell_writeN((char*) pMySessionPayload, pMyPayloadSize);
   shell_write("\r\n");
   pMySession -> msgType=gCoapNonConfirmable_c;
   pMySession -> code= gCoapPOST_c;
   pMySession -> pCallback =NULL;
   FLib_MemCpy(&pMySession->remoteAddrStorage,&gCoapDestAddress,sizeof(ipAddr_t));
- COAP_Send(pMySession, coapMsgType,  pMySessionPayload, pMyPayloadSize);
+COAP_Send(pMySession, coapMsgType,  pMySessionPayload, pMyPayloadSize);
   shell_write("'NON' packet sent 'POST' with payload: ");
-  shell_writeN((char*) pMySessionPayload, pMyPayloadSize);
+  shell_write("ACK");
   shell_write("\r\n");
   COAP_CloseSession(pMySession);
 }
-
 
 static void APP_CoapResource2Cb
 (
