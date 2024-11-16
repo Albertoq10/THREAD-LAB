@@ -451,14 +451,7 @@ void Stack_to_APP_Handler
             /* Uncomment to register multicast address */
             //IP_IF_AddMulticastGroup6(gIpIfSlp0_c, &mCastGroup);
 
-            //once router two connects, timer starts
-            if (mAppTimerId == gTmrInvalidTimerID_c) {
-            	mAppTimerId = TMR_AllocateTimer();
-            }
-            if (mAppTimerId != gTmrInvalidTimerID_c) {
-            	TMR_StartIntervalTimer(mAppTimerId, 1000 , timer_callback, NULL);//timer is in mS
-                timer_counter = 1; // starts timer at 1
-            }
+
 
             break;
 
@@ -528,7 +521,7 @@ void Stack_to_APP_Handler
 
 \param  [in]    param    Pointer to Commissioning event
 ***************************************************************************************************/
-void APP_Commissioning_Handler
+void APP_Commissioning_Handler//connection
 (
     void *param
 )
@@ -581,6 +574,14 @@ void APP_Commissioning_Handler
         case gThrEv_MeshCop_CommissionerJoinerDtlsError_c:
             break;
         case gThrEv_MeshCop_CommissionerJoinerAccepted_c:
+            //once router two connects, timer starts
+                   if (mAppTimerId == gTmrInvalidTimerID_c) {
+                   	mAppTimerId = TMR_AllocateTimer();
+                   }
+                   if (mAppTimerId != gTmrInvalidTimerID_c) {
+                   	TMR_StartIntervalTimer(mAppTimerId, 1000 , timer_callback, NULL);//timer is in mS
+                       timer_counter = 1; // starts timer at 1
+                   }
             break;
         case gThrEv_MeshCop_CommissionerNwkDataSynced_c:
             break;
