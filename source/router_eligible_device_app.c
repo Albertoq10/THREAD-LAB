@@ -310,6 +310,9 @@ uint32_t dataLen
     if (gCoapGET_c == pSession->code)
     {
       shell_write("'CON' packet received 'GET' with payload: ");
+      shell_writeN(pMySessionPayload, pMyPayloadSize);
+      shell_write("\r\n");
+      COAP_Send(pSession, gCoapMsgTypeAckSuccessContent_c, pMySessionPayload, pMyPayloadSize);
     }
     if (gCoapPOST_c == pSession->code)
     {
@@ -330,6 +333,10 @@ uint32_t dataLen
     if (gCoapGET_c == pSession->code)
     {
       shell_write("'NON' packet received 'GET' with payload: ");
+      shell_writeN(pMySessionPayload, pMyPayloadSize);
+      shell_write("\r\n");
+
+      COAP_Send(pSession, gCoapMsgTypeNonGet_c, pMySessionPayload, pMyPayloadSize);
     }
     if (gCoapPOST_c == pSession->code)
     {
@@ -401,6 +408,7 @@ void APP_NwkScanHandler
 
 \param  [in]    param    Pointer to stack event
 ***************************************************************************************************/
+tmrTimerID_t mRequestTimerId = gTmrInvalidTimerID_c;//timer for router 2
 
 void timer_callback(void *param){
 	 if (timer_counter <= 200) {
@@ -410,6 +418,31 @@ void timer_callback(void *param){
 	 }
 
 }
+
+void request_timer_callback(){ //PART 2 router 2
+	 coapSession_t *pSession = NULL;
+	 pSession = COAP_OpenSession(mAppCoapInstId);
+
+	 if (pSession != NULL)
+	    {
+	        pSession->pCallback = APP_CoapResource1Cb; // Callback to handle response
+	        pSession->msgType = gCoapConfirmable_c;
+	        pSession->code = gCoapGET_c;
+
+
+	        COAP_AddOptionToList(pSession, COAP_URI_PATH_OPTION, TEAM_RESOURCE_URI_PATH, SizeOfString(TEAM_RESOURCE_URI_PATH));//team URI
+	        FLib_MemCpy(&pSession->remoteAddrStorage.ss_addr, &gCoapDestAddress, sizeof(ipAddr_t));
+
+
+	        COAP_Send(pSession, gCoapMsgTypeConGet_c, NULL, 0);//request
+	        COAP_CloseSession(pSession);
+	    }
+
+
+
+}
+
+
 void Stack_to_APP_Handler
 (
     void *param
@@ -427,15 +460,25 @@ void Stack_to_APP_Handler
             break;
 
         case gThrEv_GeneralInd_InstanceRestoreStarted_c:
-        case gThrEv_GeneralInd_ConnectingStarted_c:
-            APP_SetMode(mThrInstanceId, gDeviceMode_Configuration_c);
+        case gThrEv_GeneralInd_ConnectingStarted_c://router 2 connection, ok
+             APP_SetMode(mThrInstanceId, gDeviceMode_Configuration_c);
             App_UpdateStateLeds(gDeviceState_JoiningOrAttaching_c);
+            THR_GetIP6Addr(mThrInstanceId, gAllThreadNodes_c, &gCoapDestAddress, NULL);
+            if (mRequestTimerId == gTmrInvalidTimerID_c) {
+            	mRequestTimerId = TMR_AllocateTimer();
+            }
+            if (mRequestTimerId != gTmrInvalidTimerID_c) {
+            	TMR_StartIntervalTimer(mRequestTimerId, 5000, request_timer_callback, NULL); // Timer set to 5 seconds
+            }
+
+
+
             gEnable802154TxLed = FALSE;
             break;
 
         case gThrEv_NwkJoinCnf_Success_c:
         case gThrEv_NwkJoinCnf_Failed_c:
-            APP_JoinEventsHandler(pEventParams->code);
+        	APP_JoinEventsHandler(pEventParams->code);
             break;
 
         case gThrEv_GeneralInd_Connected_c:
@@ -537,22 +580,22 @@ void APP_Commissioning_Handler//connection
             break;
         case gThrEv_MeshCop_JoinerDiscoveryFailedFiltered_c:
             break;
-        case gThrEv_MeshCop_JoinerDiscoverySuccess_c:
+        case gThrEv_MeshCop_JoinerDiscoverySuccess_c://no
             break;
         case gThrEv_MeshCop_JoinerDtlsSessionStarted_c:
-            App_UpdateStateLeds(gDeviceState_JoiningOrAttaching_c);
+            App_UpdateStateLeds(gDeviceState_JoiningOrAttaching_c);//no
             break;
         case gThrEv_MeshCop_JoinerDtlsError_c:
         case gThrEv_MeshCop_JoinerError_c:
             App_UpdateStateLeds(gDeviceState_FactoryDefault_c);
             break;
-        case gThrEv_MeshCop_JoinerAccepted_c:
+        case gThrEv_MeshCop_JoinerAccepted_c://no
             break;
 
         /* Commissioner Events(event set applies for all Commissioners: on-mesh, external, native) */
-        case gThrEv_MeshCop_CommissionerPetitionStarted_c:
+        case gThrEv_MeshCop_CommissionerPetitionStarted_c://no
             break;
-        case gThrEv_MeshCop_CommissionerPetitionAccepted_c:
+        case gThrEv_MeshCop_CommissionerPetitionAccepted_c://no
         {
             uint8_t aDefaultEui[8] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
             thrOctet32_t defaultPskD = THR_PSK_D;
@@ -569,11 +612,11 @@ void APP_Commissioning_Handler//connection
             break;
         case gThrEv_MeshCop_CommissionerError_c:
             break;
-        case gThrEv_MeshCop_CommissionerJoinerDtlsSessionStarted_c:
+        case gThrEv_MeshCop_CommissionerJoinerDtlsSessionStarted_c://no
             break;
-        case gThrEv_MeshCop_CommissionerJoinerDtlsError_c:
+        case gThrEv_MeshCop_CommissionerJoinerDtlsError_c://no
             break;
-        case gThrEv_MeshCop_CommissionerJoinerAccepted_c:
+        case gThrEv_MeshCop_CommissionerJoinerAccepted_c://no
             //once router two connects, timer starts
                    if (mAppTimerId == gTmrInvalidTimerID_c) {
                    	mAppTimerId = TMR_AllocateTimer();
@@ -645,7 +688,7 @@ static void APP_InitCoapDemo
 
 \param  [in]    param    Not used
 ***************************************************************************************************/
-static void APP_ThrNwkJoin
+static void APP_ThrNwkJoin//no
 (
     uint8_t *param
 )
@@ -944,7 +987,7 @@ static void APP_JoinEventsHandler
             }
             mJoiningIsAppInitiated = FALSE;
         }
-        else if(evCode == gThrEv_NwkJoinCnf_Success_c)
+        else if(evCode == gThrEv_NwkJoinCnf_Success_c)//no
         {
             mJoiningIsAppInitiated = FALSE;
         }
@@ -965,7 +1008,7 @@ static void APP_JoinEventsHandler
 \param  [in]    pSession        Pointer to CoAP session
 \param  [in]    dataLen         Length of CoAP payload
 ***************************************************************************************************/
-static void APP_CoapGenericCallback
+static void APP_CoapGenericCallback//no
 (
     coapSessionStatus_t sessionStatus,
     uint8_t *pData,
@@ -1003,7 +1046,7 @@ static void APP_CoapGenericCallback
 
 \param  [in]    pParam    Not used
 ***************************************************************************************************/
-static void APP_ReportTemp
+static void APP_ReportTemp//no
 (
     uint8_t *pParam
 )
@@ -1128,7 +1171,7 @@ static void APP_SendDataSinkRelease
 \param  [in]    dataLen     Data length
 ***************************************************************************************************/
 static void APP_SendLedCommand
-(
+(//no
     uint8_t *pCommand,
     uint8_t dataLen
 )
