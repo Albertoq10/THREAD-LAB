@@ -275,6 +275,28 @@ void APP_Handler
     }
 }
 
+void set_counter_payload(uint32_t counter, uint8_t *pMySessionPayload) {
+    // Centenas
+    pMySessionPayload[0] = (counter / 100) + '0';
+    // Decenas
+    pMySessionPayload[1] = ((counter % 100) / 10) + '0';
+    // Unidades
+    pMySessionPayload[2] = (counter % 10) + '0';
+}
+
+void print_addr(coapSession_t *pSession) {
+
+    for (int i = 8; i < 16; i++) {
+        uint8_t addr = pSession->remoteAddrStorage.ss_addr[i];
+        shell_writeHex(&addr, 1);
+
+        if (i % 2 != 0 && i < 15) {
+            shell_write(":");
+        }
+    }
+    shell_write("\r\n");
+}
+
 static void APP_CoapTeam6Cb(coapSessionStatus_t sessionStatus, void *pData, coapSession_t *pSession, uint32_t dataLen) {
     //char ipAddrStr[INET6_ADDRSTRLEN];
     //inet_ntop(AF_INET6, &pSession->remoteAddrStorage, ipAddrStr, sizeof(ipAddrStr));
@@ -286,108 +308,28 @@ static void APP_CoapTeam6Cb(coapSessionStatus_t sessionStatus, void *pData, coap
 
     	if(gCoapGET_c == pSession->code){
             shell_write("CON request received from ");
-            addr = pSession->remoteAddrStorage.ss_addr[8];
-            shell_writeHex(&addr, 1);
-            addr = pSession->remoteAddrStorage.ss_addr[9];
-            shell_writeHex(&addr, 1);
-            shell_write(":");
-            addr = pSession->remoteAddrStorage.ss_addr[10];
-            shell_writeHex(&addr, 1);
-            addr = pSession->remoteAddrStorage.ss_addr[11];
-            shell_writeHex(&addr, 1);
-            shell_write(":");
-            addr = pSession->remoteAddrStorage.ss_addr[12];
-            shell_writeHex(&addr, 1);
-            addr = pSession->remoteAddrStorage.ss_addr[13];
-            shell_writeHex(&addr, 1);
-            shell_write(":");
-            addr = pSession->remoteAddrStorage.ss_addr[14];
-            shell_writeHex(&addr, 1);
-            addr = pSession->remoteAddrStorage.ss_addr[15];
-            shell_writeHex(&addr, 1);
-            shell_write("\r\n");
-            pMySessionPayload[0] = (counter / 100) + '0';       // Centenas
-            pMySessionPayload[1] = ((counter % 100) / 10) + '0'; // Decenas
-            pMySessionPayload[2] = (counter % 10) + '0';         // Unidades
+            print_addr(pSession);
+            set_counter_payload(counter, pMySessionPayload);
             pMyPayloadSize = sizeof(pMySessionPayload);
             COAP_Send(pSession, gCoapMsgTypeNonPost_c, pMySessionPayload, pMyPayloadSize);
     	}else{
             shell_write("Counter = ");
             shell_writeN((char *)pData, dataLen);
             shell_write(" from ");
-            addr = pSession->remoteAddrStorage.ss_addr[8];
-            shell_writeHex(&addr, 1);
-            addr = pSession->remoteAddrStorage.ss_addr[9];
-            shell_writeHex(&addr, 1);
-            shell_write(":");
-            addr = pSession->remoteAddrStorage.ss_addr[10];
-            shell_writeHex(&addr, 1);
-            addr = pSession->remoteAddrStorage.ss_addr[11];
-            shell_writeHex(&addr, 1);
-            shell_write(":");
-            addr = pSession->remoteAddrStorage.ss_addr[12];
-            shell_writeHex(&addr, 1);
-            addr = pSession->remoteAddrStorage.ss_addr[13];
-            shell_writeHex(&addr, 1);
-            shell_write(":");
-            addr = pSession->remoteAddrStorage.ss_addr[14];
-            shell_writeHex(&addr, 1);
-            addr = pSession->remoteAddrStorage.ss_addr[15];
-            shell_writeHex(&addr, 1);
-            shell_write("\r\n");
+            print_addr(pSession);
     	}
     } else {
     	if(gCoapGET_c == pSession->code){
             shell_write("NON request received from ");
-            addr = pSession->remoteAddrStorage.ss_addr[8];
-            shell_writeHex(&addr, 1);
-            addr = pSession->remoteAddrStorage.ss_addr[9];
-            shell_writeHex(&addr, 1);
-            shell_write(":");
-            addr = pSession->remoteAddrStorage.ss_addr[10];
-            shell_writeHex(&addr, 1);
-            addr = pSession->remoteAddrStorage.ss_addr[11];
-            shell_writeHex(&addr, 1);
-            shell_write(":");
-            addr = pSession->remoteAddrStorage.ss_addr[12];
-            shell_writeHex(&addr, 1);
-            addr = pSession->remoteAddrStorage.ss_addr[13];
-            shell_writeHex(&addr, 1);
-            shell_write(":");
-            addr = pSession->remoteAddrStorage.ss_addr[14];
-            shell_writeHex(&addr, 1);
-            addr = pSession->remoteAddrStorage.ss_addr[15];
-            shell_writeHex(&addr, 1);
-            shell_write("\r\n");
-            pMySessionPayload[0] = (counter / 100) + '0';       // Centenas
-            pMySessionPayload[1] = ((counter % 100) / 10) + '0'; // Decenas
-            pMySessionPayload[2] = (counter % 10) + '0';         // Unidades
+            print_addr(pSession);
+            set_counter_payload(counter, pMySessionPayload);
             pMyPayloadSize = sizeof(pMySessionPayload);
             COAP_Send(pSession, gCoapMsgTypeNonPost_c, pMySessionPayload, pMyPayloadSize);
     	}else{
             shell_write("Counter = ");
             shell_writeN((char *)pData, dataLen);
             shell_write(" from ");
-            addr = pSession->remoteAddrStorage.ss_addr[8];
-            shell_writeHex(&addr, 1);
-            addr = pSession->remoteAddrStorage.ss_addr[9];
-            shell_writeHex(&addr, 1);
-            shell_write(":");
-            addr = pSession->remoteAddrStorage.ss_addr[10];
-            shell_writeHex(&addr, 1);
-            addr = pSession->remoteAddrStorage.ss_addr[11];
-            shell_writeHex(&addr, 1);
-            shell_write(":");
-            addr = pSession->remoteAddrStorage.ss_addr[12];
-            shell_writeHex(&addr, 1);
-            addr = pSession->remoteAddrStorage.ss_addr[13];
-            shell_writeHex(&addr, 1);
-            shell_write(":");
-            addr = pSession->remoteAddrStorage.ss_addr[14];
-            shell_writeHex(&addr, 1);
-            addr = pSession->remoteAddrStorage.ss_addr[15];
-            shell_writeHex(&addr, 1);
-            shell_write("\r\n");
+            print_addr(pSession);
     	}
 
     }
@@ -428,7 +370,7 @@ void counterTimerCallback(void *param) {
     if (counter < 200) {
         counter++;
     } else {
-        counter = 0;  // Reinicia el contador después de 200
+        counter = 0;
     }
 }
 
