@@ -80,11 +80,6 @@ Private macros
 #define APP_TEMP_URI_PATH                       "/temp"
 #define APP_SINK_URI_PATH                       "/sink"
 
-
-#define APP_RESOURCE1_URI_PATH                       "/resource1"
-
-#define APP_RESOURCE2_URI_PATH 						 "/resource2"
-
 #define TEAM_RESOURCE_URI_PATH 						 "/team6"
 
 #if LARGE_NETWORK
@@ -102,7 +97,10 @@ Private type definitions
 /*==================================================================================================
 Private global variables declarations
 ==================================================================================================*/
-static uint32_t timer_counter = 1;
+static uint8_t counter = 0;        // Contador
+static bool isLeader = false;       // Define el rol del dispositivo
+tmrTimerID_t mRequestTimerId = gTmrInvalidTimerID_c;//timer for router 2
+
 
 static instanceId_t mThrInstanceId = gInvalidInstanceId_c;    /*!< Thread Instance ID */
 
@@ -134,9 +132,6 @@ static void APP_CoapTempCb(coapSessionStatus_t sessionStatus, uint8_t *pData, co
 static void APP_CoapSinkCb(coapSessionStatus_t sessionStatus, uint8_t *pData, coapSession_t *pSession, uint32_t dataLen);
 static void App_RestoreLeaderLed(uint8_t *param);
 
-static void APP_CoapResource1Cb(coapSessionStatus_t sessionStatus, void *pData, coapSession_t *pSession, uint32_t dataLen);
-
-static void APP_CoapResource2Cb(coapSessionStatus_t sessionStatus, void *pData, coapSession_t *pSession, uint32_t dataLen);
 #if LARGE_NETWORK
 static void APP_CoapResetToFactoryDefaultsCb(coapSessionStatus_t sessionStatus, uint8_t *pData, coapSession_t *pSession, uint32_t dataLen);
 static void APP_SendResetToFactoryCommand(uint8_t *param);
@@ -153,9 +148,7 @@ const coapUriPath_t gAPP_LED_URI_PATH  = {SizeOfString(APP_LED_URI_PATH), (uint8
 const coapUriPath_t gAPP_TEMP_URI_PATH = {SizeOfString(APP_TEMP_URI_PATH), (uint8_t *)APP_TEMP_URI_PATH};
 const coapUriPath_t gAPP_SINK_URI_PATH = {SizeOfString(APP_SINK_URI_PATH), (uint8_t *)APP_SINK_URI_PATH};
 
-const coapUriPath_t gAPP_RESOURCE1_URI_PATH = {SizeOfString(APP_RESOURCE1_URI_PATH), APP_RESOURCE1_URI_PATH};
 
-const coapUriPath_t gAPP_RESOURCE2_URI_PATH = {SizeOfString(APP_RESOURCE2_URI_PATH), APP_RESOURCE2_URI_PATH};
 
 const coapUriPath_t gTEAM_RESOURCE_URI_PATH = {SizeOfString(TEAM_RESOURCE_URI_PATH), TEAM_RESOURCE_URI_PATH};// TEAM URI SOURCE
 
@@ -281,101 +274,111 @@ void APP_Handler
         }
     }
 }
-static void APP_CoapResource1Cb
-(
 
-coapSessionStatus_t sessionStatus,
-void *pData,
-coapSession_t *pSession,
-uint32_t dataLen
-)
+static void APP_CoapTeam6Cb(coapSessionStatus_t sessionStatus, void *pData, coapSession_t *pSession, uint32_t dataLen) {
+    //char ipAddrStr[INET6_ADDRSTRLEN];
+    //inet_ntop(AF_INET6, &pSession->remoteAddrStorage, ipAddrStr, sizeof(ipAddrStr));
+	static uint8_t pMySessionPayload[3];//for counter
+	static uint32_t pMyPayloadSize;
+	uint8_t addr;
 
-{
+    if (gCoapConfirmable_c == pSession->msgType) {
 
-	coapMsgTypesAndCodes_t coapMsgType = gCoapMsgTypeConPost_c  ;
-// static uint8_t pMySessionPayload[3]={0x31,0x32,0x33};
-	static uint8_t pMySessionPayload[4];//for counter
-  static uint32_t pMyPayloadSize;
-  coapSession_t *pMySession = NULL;
-  pMySession = COAP_OpenSession(mAppCoapInstId);//session created
-  COAP_AddOptionToList(pMySession,COAP_URI_PATH_OPTION, APP_RESOURCE2_URI_PATH,SizeOfString(APP_RESOURCE2_URI_PATH));
+    	if(gCoapGET_c == pSession->code){
+            shell_write("CON request received from ");
+            addr = pSession->remoteAddrStorage.ss_addr[8];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[9];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[10];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[11];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[12];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[13];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[14];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[15];
+            shell_writeHex(&addr, 1);
+            shell_write("\r\n");
+            pMySessionPayload[0] = (counter / 100) + '0';       // Centenas
+            pMySessionPayload[1] = ((counter % 100) / 10) + '0'; // Decenas
+            pMySessionPayload[2] = (counter % 10) + '0';         // Unidades
+            pMyPayloadSize = sizeof(pMySessionPayload);
+            COAP_Send(pSession, gCoapMsgTypeNonPost_c, pMySessionPayload, pMyPayloadSize);
+    	}else{
+            shell_write("Counter = ");
+            shell_writeN((char *)pData, dataLen);
+            shell_write(" from ");
+            addr = pSession->remoteAddrStorage.ss_addr[8];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[9];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[10];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[11];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[12];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[13];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[14];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[15];
+            shell_writeHex(&addr, 1);
+            shell_write("\r\n");
+    	}
+    } else {
+    	if(gCoapGET_c == pSession->code){
+            shell_write("NON request received from ");
+            addr = pSession->remoteAddrStorage.ss_addr[8];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[9];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[10];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[11];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[12];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[13];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[14];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[15];
+            shell_writeHex(&addr, 1);
+            shell_write("\r\n");
+            pMySessionPayload[0] = (counter / 100) + '0';       // Centenas
+            pMySessionPayload[1] = ((counter % 100) / 10) + '0'; // Decenas
+            pMySessionPayload[2] = (counter % 10) + '0';         // Unidades
+            pMyPayloadSize = sizeof(pMySessionPayload);
+            COAP_Send(pSession, gCoapMsgTypeNonPost_c, pMySessionPayload, pMyPayloadSize);
+    	}else{
+            shell_write("Counter = ");
+            shell_writeN((char *)pData, dataLen);
+            shell_write(" from ");
+            addr = pSession->remoteAddrStorage.ss_addr[8];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[9];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[10];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[11];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[12];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[13];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[14];
+            shell_writeHex(&addr, 1);
+            addr = pSession->remoteAddrStorage.ss_addr[15];
+            shell_writeHex(&addr, 1);
+            shell_write("\r\n");
+    	}
 
-  snprintf(pMySessionPayload, sizeof(pMySessionPayload), "%d", timer_counter);//timer counter value format
-  pMyPayloadSize = strlen(pMySessionPayload);
-
-    if (gCoapConfirmable_c == pSession->msgType)
-  {
-    if (gCoapGET_c == pSession->code)
-    {
-      shell_write("'CON' packet received 'GET' with payload: ");
-      shell_writeN(pMySessionPayload, pMyPayloadSize);
-      shell_write("\r\n");
-      COAP_Send(pSession, gCoapMsgTypeAckSuccessContent_c, pMySessionPayload, pMyPayloadSize);
     }
-    if (gCoapPOST_c == pSession->code)
-    {
-      shell_write("'CON' packet received 'POST' with payload: ");
-    }
-    if (gCoapPUT_c == pSession->code)
-    {
-      shell_write("'CON' packet received 'PUT' with payload: ");
-    }
-    if (gCoapFailure_c!=sessionStatus)
-    {
-      COAP_Send(pSession, gCoapMsgTypeAckSuccessChanged_c, pMySessionPayload, pMyPayloadSize);
-    }
-  }
-
-  else if(gCoapNonConfirmable_c == pSession->msgType)
-  {
-    if (gCoapGET_c == pSession->code)
-    {
-      shell_write("'NON' packet received 'GET' with payload: ");
-      shell_writeN(pMySessionPayload, pMyPayloadSize);
-      shell_write("\r\n");
-
-      COAP_Send(pSession, gCoapMsgTypeNonGet_c, pMySessionPayload, pMyPayloadSize);
-    }
-    if (gCoapPOST_c == pSession->code)
-    {
-      shell_write("'NON' packet received 'POST' with payload: ");
-    }
-    if (gCoapPUT_c == pSession->code)
-    {
-      shell_write("'NON' packet received 'PUT' with payload: ");
-    }
-  }
-  shell_writeN((char*) pMySessionPayload, pMyPayloadSize);
-<<<<<<< HEAD
-=======
-  shell_write("\r\n");
-  pMySession -> msgType=gCoapNonConfirmable_c;
-  pMySession -> code= gCoapPOST_c;
-  pMySession -> pCallback =NULL;
-  FLib_MemCpy(&pMySession->remoteAddrStorage,&gCoapDestAddress,sizeof(ipAddr_t));
-COAP_Send(pMySession, coapMsgType,  pMySessionPayload, pMyPayloadSize);
-  shell_write("'NON' packet sent 'POST' with payload: ");
-  shell_write("ACK");
->>>>>>> 28732701d47b62c698738e42142613fd80b5850c
-  shell_write("\r\n");
-  COAP_CloseSession(pMySession);
-}
-
-static void APP_CoapResource2Cb
-(
-coapSessionStatus_t sessionStatus,
-void *pData,
-coapSession_t *pSession,
-uint32_t dataLen
-)
-
-{
-  if (gCoapNonConfirmable_c == pSession->msgType)
-  {
-      shell_write("'NON' packet received 'POST' with payload: ");
-      shell_writeN(pData, dataLen);
-      shell_write("\r\n");
-  }
 }
 /*!*************************************************************************************************
 \fn     void APP_NwkScanHandler(void *param)
@@ -409,46 +412,61 @@ void APP_NwkScanHandler
 
 \param  [in]    param    Pointer to stack event
 ***************************************************************************************************/
-tmrTimerID_t mRequestTimerId = gTmrInvalidTimerID_c;//timer for router 2
-
-void timer_callback(void *param){
-	 if (timer_counter <= 200) {
-		 timer_counter++;
-	 } else {
-		 timer_counter = 1;
-	 }
-
+void counterTimerCallback(void *param) {
+    if (counter < 200) {
+        counter++;
+    } else {
+        counter = 0;  // Reinicia el contador después de 200
+    }
 }
 
-void request_timer_callback(){ //PART 2 router 2
-	 coapSession_t *pSession = NULL;
-	 pSession = COAP_OpenSession(mAppCoapInstId);
-
-	 if (pSession != NULL)
-	    {
-	        pSession->pCallback = APP_CoapResource1Cb; // Callback to handle response
-	        pSession->msgType = gCoapConfirmable_c;
-	        pSession->code = gCoapGET_c;
-
-
-	        COAP_AddOptionToList(pSession, COAP_URI_PATH_OPTION, TEAM_RESOURCE_URI_PATH, SizeOfString(TEAM_RESOURCE_URI_PATH));//team URI
-	        FLib_MemCpy(&pSession->remoteAddrStorage.ss_addr, &gCoapDestAddress, sizeof(ipAddr_t));
-
-
-	        COAP_Send(pSession, gCoapMsgTypeConGet_c, NULL, 0);//request
-	        COAP_CloseSession(pSession);
-	    }
-
-
-
+void startCounterTimer(void) {
+    if (isLeader) {
+        if (mAppTimerId == gTmrInvalidTimerID_c) {
+        	mAppTimerId = TMR_AllocateTimer();
+        }
+        if (mAppTimerId != gTmrInvalidTimerID_c) {
+        	TMR_StartIntervalTimer(mAppTimerId, 1000 , counterTimerCallback, NULL);//timer is in mS
+        	counter = 0; // starts timer at 1
+        }
+    }
 }
+
+void requestCounterCallback(void *param) {
+    coapSession_t *pSession;
+    if(!IP_IF_IsMyAddr(gIpIfSlp0_c, &gCoapDestAddress))
+	{
+		pSession = COAP_OpenSession(mAppCoapInstId);
+
+		if(NULL != pSession)
+		{
+			pSession->pCallback = NULL;
+			FLib_MemCpy(&pSession->remoteAddrStorage.ss_addr, &gCoapDestAddress, sizeof(ipAddr_t));
+			pSession->pUriPath = (coapUriPath_t *)&gTEAM_RESOURCE_URI_PATH;
+			shell_write("Getting counter...\r\n");
+			COAP_Send(pSession, gCoapMsgTypeNonGet_c, NULL, 0);
+		}
+	}
+}
+
+void startRequestTimer(void) {
+    if (!isLeader) {
+        if (mRequestTimerId == gTmrInvalidTimerID_c) {
+        	mRequestTimerId = TMR_AllocateTimer();
+        }
+        if (mRequestTimerId != gTmrInvalidTimerID_c) {
+        	TMR_StartIntervalTimer(mRequestTimerId, 5000, requestCounterCallback, NULL); // Timer set to 5 seconds
+        }
+    }
+}
+
+
 
 
 void Stack_to_APP_Handler
 (
     void *param
-)
-{
+){
     thrEvmParams_t *pEventParams = (thrEvmParams_t *)param;
 
     /* Uncomment for multicast address */
@@ -465,15 +483,8 @@ void Stack_to_APP_Handler
              APP_SetMode(mThrInstanceId, gDeviceMode_Configuration_c);
             App_UpdateStateLeds(gDeviceState_JoiningOrAttaching_c);
             THR_GetIP6Addr(mThrInstanceId, gAllThreadNodes_c, &gCoapDestAddress, NULL);
-            if (mRequestTimerId == gTmrInvalidTimerID_c) {
-            	mRequestTimerId = TMR_AllocateTimer();
-            }
-            if (mRequestTimerId != gTmrInvalidTimerID_c) {
-            	TMR_StartIntervalTimer(mRequestTimerId, 5000, request_timer_callback, NULL); // Timer set to 5 seconds
-            }
 
-
-
+            startRequestTimer();
             gEnable802154TxLed = FALSE;
             break;
 
@@ -619,13 +630,8 @@ void APP_Commissioning_Handler//connection
             break;
         case gThrEv_MeshCop_CommissionerJoinerAccepted_c://no
             //once router two connects, timer starts
-                   if (mAppTimerId == gTmrInvalidTimerID_c) {
-                   	mAppTimerId = TMR_AllocateTimer();
-                   }
-                   if (mAppTimerId != gTmrInvalidTimerID_c) {
-                   	TMR_StartIntervalTimer(mAppTimerId, 1000 , timer_callback, NULL);//timer is in mS
-                       timer_counter = 1; // starts timer at 1
-                   }
+        		   isLeader = true;
+        		   startCounterTimer();
             break;
         case gThrEv_MeshCop_CommissionerNwkDataSynced_c:
             break;
@@ -665,10 +671,7 @@ static void APP_InitCoapDemo
     coapRegCbParams_t cbParams[] =  {{APP_CoapLedCb,  (coapUriPath_t *)&gAPP_LED_URI_PATH},
                                      {APP_CoapTempCb, (coapUriPath_t *)&gAPP_TEMP_URI_PATH},
 
-									 {APP_CoapResource1Cb, (coapUriPath_t*)&gAPP_RESOURCE1_URI_PATH},
-									 {APP_CoapResource1Cb, (coapUriPath_t*)&gTEAM_RESOURCE_URI_PATH},
-
-									 {APP_CoapResource2Cb, (coapUriPath_t*)&gAPP_RESOURCE2_URI_PATH},
+									 {APP_CoapTeam6Cb, (coapUriPath_t*)&gTEAM_RESOURCE_URI_PATH},
 
 #if LARGE_NETWORK
                                      {APP_CoapResetToFactoryDefaultsCb, (coapUriPath_t *)&gAPP_RESET_URI_PATH},
