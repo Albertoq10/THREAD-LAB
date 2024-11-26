@@ -285,8 +285,6 @@ void APP_Handler
 static void APP_CoapResource1Cb
 (
 
-
-
 coapSessionStatus_t sessionStatus,
 void *pData,
 coapSession_t *pSession,
@@ -342,14 +340,6 @@ uint32_t dataLen
     }
   }
   shell_writeN((char*) pMySessionPayload, pMyPayloadSize);
-  shell_write("\r\n");
-  pMySession -> msgType=gCoapNonConfirmable_c;
-  pMySession -> code= gCoapPOST_c;
-  pMySession -> pCallback =NULL;
-  FLib_MemCpy(&pMySession->remoteAddrStorage,&gCoapDestAddress,sizeof(ipAddr_t));
- COAP_Send(pMySession, coapMsgType,  pMySessionPayload, pMyPayloadSize);
-  shell_write("'NON' packet sent 'POST' with payload: ");
-  shell_write("ACK");
   shell_write("\r\n");
   COAP_CloseSession(pMySession);
 }
