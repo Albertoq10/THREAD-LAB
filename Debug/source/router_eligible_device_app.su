@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ../source/router_eligible_device_app.c:397:6:timer_callback	0	static
 ../source/router_eligible_device_app.c:639:13:APP_ThrNwkJoin	8	static
 ../source/router_eligible_device_app.c:911:13:APP_JoinEventsHandler	8	static
@@ -32,3 +33,40 @@
 ../source/router_eligible_device_app.c:405:6:Stack_to_APP_Handler	16	static
 ../source/router_eligible_device_app.c:523:6:APP_Commissioning_Handler	80	static
 ../source/router_eligible_device_app.c:591:6:App_RestoreLeaderLedCb	8	static
+=======
+../source/router_eligible_device_app.c:413:6:timer_callback	0	static
+../source/router_eligible_device_app.c:691:13:APP_ThrNwkJoin	8	static
+../source/router_eligible_device_app.c:963:13:APP_JoinEventsHandler	8	static
+../source/router_eligible_device_app.c:709:13:App_JoinTimerCallback	8	static
+../source/router_eligible_device_app.c:844:13:APP_AppModeHandleKeyboard	8	static
+../source/router_eligible_device_app.c:939:13:App_UpdateStateLeds	8	static
+../source/router_eligible_device_app.c:730:13:APP_ConfigModeSwShortPressHandler	8	static
+../source/router_eligible_device_app.c:801:13:APP_ConfigModeHandleKeyboard	8	static
+../source/router_eligible_device_app.c:913:13:App_HandleKeyboard	8	static
+../source/router_eligible_device_app.c:1566:13:App_RestoreLeaderLed	8	static
+../source/router_eligible_device_app.c:1299:13:APP_LocalDataSinkRelease	24	static
+../source/router_eligible_device_app.c:1098:20:APP_SendDataSinkCommand	32	static
+../source/router_eligible_device_app.c:1149:13:APP_SendDataSinkRelease	24	static
+../source/router_eligible_device_app.c:1011:13:APP_CoapGenericCallback	8	static
+../source/router_eligible_device_app.c:1527:13:APP_CoapSinkCb	16	static
+../source/router_eligible_device_app.c:1352:13:APP_ProcessLedCmd	24	static
+../source/router_eligible_device_app.c:1173:13:APP_SendLedCommand	24	static
+../source/router_eligible_device_app.c:1281:13:APP_SendLedColorWheel	32	static
+../source/router_eligible_device_app.c:1264:13:APP_SendLedFlash	16	static
+../source/router_eligible_device_app.c:1247:13:APP_SendLedRgbOff	40	static
+../source/router_eligible_device_app.c:1322:13:APP_CoapLedCb	16	static
+../source/router_eligible_device_app.c:1216:13:APP_SendLedRgbOn	56	static
+../source/router_eligible_device_app.c:1049:13:APP_ReportTemp	24	static
+../source/router_eligible_device_app.c:1127:13:APP_SendDataSinkCreate	16	static
+../source/router_eligible_device_app.c:659:13:APP_InitCoapDemo	104	static
+../source/router_eligible_device_app.c:363:13:APP_CoapResource2Cb	16	static
+../source/router_eligible_device_app.c:284:13:APP_CoapResource1Cb	24	static
+../source/router_eligible_device_app.c:422:6:request_timer_callback	8	static
+../source/router_eligible_device_app.c:1456:13:APP_CoapTempCb	88	static
+../source/router_eligible_device_app.c:204:6:APP_Init	8	static
+../source/router_eligible_device_app.c:266:6:APP_Handler	8	static
+../source/router_eligible_device_app.c:385:6:APP_NwkScanHandler	16	static
+../source/router_eligible_device_app.c:446:6:Stack_to_APP_Handler	16	static
+../source/router_eligible_device_app.c:567:6:APP_Commissioning_Handler	80	static
+../source/router_eligible_device_app.c:643:6:App_RestoreLeaderLedCb	8	static
+>>>>>>> 28732701d47b62c698738e42142613fd80b5850c
